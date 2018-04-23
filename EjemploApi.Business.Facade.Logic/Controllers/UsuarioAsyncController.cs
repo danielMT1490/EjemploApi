@@ -14,11 +14,6 @@ namespace EjemploApi.Business.Facade.Logic.Controllers
     public class UsuarioAsyncController : ApiController
     {
         private readonly IUsuarioBlAsync _usuarioBlAsync;
-        /*
-        public UsuarioAsyncController()
-        {
-            this._usuarioBlAsync = new UsuarioBlAsync(new RedisDao<Usuario>());
-        }*/
         
         public UsuarioAsyncController(IUsuarioBlAsync usuarioBlAsync)
         {
@@ -28,17 +23,17 @@ namespace EjemploApi.Business.Facade.Logic.Controllers
         [HttpGet()]
         public async Task<IHttpActionResult> GetAsync(string key)
         {
-            //Thread.Sleep(10000);
+            Thread.Sleep(10000);
             var result = await this._usuarioBlAsync.GetAsync(key);
             return Ok(result);
         }
 
 
         [HttpPost()]
-        public async Task<IHttpActionResult> AddAsync(Usuario entity )
+        public async Task<IHttpActionResult> AddAsync(string key ,Usuario entity )
         {
-            //Thread.Sleep(10000);
-            var result=  await this._usuarioBlAsync.AddAsync(entity, "pepe");
+            Thread.Sleep(10000);
+            var result=  await this._usuarioBlAsync.AddAsync(entity,key);
             return Ok(result);
         }
     }
