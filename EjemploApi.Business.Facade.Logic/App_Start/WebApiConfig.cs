@@ -31,7 +31,7 @@ namespace EjemploApi.Business.Facade.Logic
               defaults: new { id = RouteParameter.Optional }
           );
             //Remplazamos de busqueda de nombre de controlodor
-            //config.Services.Replace(typeof(IHttpControllerSelector), new CustomControllerSelector((config)));
+            config.Services.Replace(typeof(IHttpControllerSelector), new CustomControllerSelector((config)));
 
             //Inyecta al constructor del controller la instacia de la interfaz De Business
             var container = new UnityContainer();

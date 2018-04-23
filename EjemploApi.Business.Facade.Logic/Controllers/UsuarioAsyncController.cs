@@ -19,7 +19,11 @@ namespace EjemploApi.Business.Facade.Logic.Controllers
         {
             this._usuarioBlAsync = usuarioBlAsync;
         }
-
+        /// <summary>
+        /// Return one Student for Redis
+        /// </summary>
+        /// <param name=<em>"key"</em>>Redis key of tables</param>
+        /// <returns>Student Json Serialize</returns>
         [HttpGet()]
         public async Task<IHttpActionResult> GetAsync(string key)
         {
@@ -28,7 +32,12 @@ namespace EjemploApi.Business.Facade.Logic.Controllers
             return Ok(result);
         }
 
-
+        /// <summary>
+        /// Add one Student in Redis
+        /// </summary>
+        /// <param name=<em>"key"</em>>Redis key of tables</param>
+        /// <param name=<em>"entity"</em>>The student to save</param>
+        /// <returns>Student Json Serialize</returns>
         [HttpPost()]
         public async Task<IHttpActionResult> AddAsync(string key ,Usuario entity )
         {
