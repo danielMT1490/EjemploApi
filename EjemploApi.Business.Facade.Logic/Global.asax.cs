@@ -11,6 +11,7 @@ namespace EjemploApi.Business.Facade.Logic
     {
         protected void Application_Start()
         {
+            
             GlobalConfiguration.Configure(WebApiConfig.Register);
         }
     }

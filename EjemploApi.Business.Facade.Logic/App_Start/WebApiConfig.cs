@@ -1,9 +1,12 @@
-﻿using EjemploApi.Business.Facade.Logic.Controllers;
+﻿using EjemploApi.Business.Facade.Logic.App_Start;
+using EjemploApi.Business.Facade.Logic.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Dispatcher;
+using Unity;
+using Unity.Lifetime;
 
 namespace EjemploApi.Business.Facade.Logic
 {
@@ -17,8 +20,8 @@ namespace EjemploApi.Business.Facade.Logic
             config.MapHttpAttributeRoutes();
             //versionado de apis
             config.Routes.MapHttpRoute(
-                name: "Version1Api",
-                routeTemplate: "api/v1/{controller}/{id}",
+                name: "Version1Api",//Nombre de la version
+                routeTemplate: "api/v1/{controller}/{action}/{id}",//ruta
                 defaults: new { id = RouteParameter.Optional }
             );
 
@@ -28,7 +31,12 @@ namespace EjemploApi.Business.Facade.Logic
               defaults: new { id = RouteParameter.Optional }
           );
             //Remplazamos de busqueda de nombre de controlodor
-            config.Services.Replace(typeof(IHttpControllerSelector), new CustomControllerSelector((config)));
+            //config.Services.Replace(typeof(IHttpControllerSelector), new CustomControllerSelector((config)));
+
+            //Inyecta al constructor del controller la instacia de la interfaz De Business
+            var container = new UnityContainer();
+            container.RegisterType<IUsuarioBlAsync, UsuarioBlAsync>(new HierarchicalLifetimeManager());
+            config.DependencyResolver = new UnityResolver(container);
         }
     }
 }

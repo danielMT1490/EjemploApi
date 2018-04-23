@@ -1,4 +1,5 @@
 ﻿using EjemploApi.Common.Logic;
+using EjemploApi.DataAccess.Redis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,21 +14,32 @@ namespace EjemploApi.Business.Facade.Logic.Controllers
     public class UsuarioAsyncController : ApiController
     {
         private readonly IUsuarioBlAsync _usuarioBlAsync;
-
+        /*
+        public UsuarioAsyncController()
+        {
+            this._usuarioBlAsync = new UsuarioBlAsync(new RedisDao<Usuario>());
+        }*/
+        
         public UsuarioAsyncController(IUsuarioBlAsync usuarioBlAsync)
         {
             this._usuarioBlAsync = usuarioBlAsync;
         }
 
-        public async Task<Usuario> GetAsync(string key)
+        [HttpGet()]
+        public async Task<IHttpActionResult> GetAsync(string key)
         {
-            Thread.Sleep(10000);
-            return await this._usuarioBlAsync.GetAsync(key);
+            //Thread.Sleep(10000);
+            var result = await this._usuarioBlAsync.GetAsync(key);
+            return Ok(result);
         }
-        public async Task<Usuario> AddAsync(Usuario entity , string key)
+
+
+        [HttpPost()]
+        public async Task<IHttpActionResult> AddAsync(Usuario entity )
         {
-            Thread.Sleep(10000);
-            return await this._usuarioBlAsync.AddAsync(entity, key);
+            //Thread.Sleep(10000);
+            var result=  await this._usuarioBlAsync.AddAsync(entity, "pepe");
+            return Ok(result);
         }
     }
 }

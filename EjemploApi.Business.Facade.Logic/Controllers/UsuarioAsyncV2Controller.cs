@@ -17,12 +17,13 @@ namespace EjemploApi.Business.Facade.Logic.Controllers
         {
             this._usuarioBlAsync = usuarioBlAsync;
         }
-
+        [HttpGet]
         public async Task<Usuario> GetAsync(string key)
         {
             Thread.Sleep(10000);
             return await this._usuarioBlAsync.GetAsync(key);
         }
+        [HttpPost]
         public async Task<Usuario> AddAsync(Usuario entity, string key)
         {
             Thread.Sleep(10000);

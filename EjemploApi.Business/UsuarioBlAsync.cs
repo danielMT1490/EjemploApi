@@ -13,10 +13,10 @@ namespace EjemploApi.Business
         private readonly IGetAsync<Usuario> _get;
         private readonly ISetAsync<Usuario> _set;
 
-        public UsuarioBlAsync(IGetAsync<Usuario> get, ISetAsync<Usuario> set)
+        public UsuarioBlAsync(RedisDao<Usuario> Redis)
         {
-            this._get = get;
-            this._set = set;
+            this._get = Redis;
+            this._set = Redis;
         }
         public async Task<Usuario> AddAsync(Usuario entity, string key)
         {
