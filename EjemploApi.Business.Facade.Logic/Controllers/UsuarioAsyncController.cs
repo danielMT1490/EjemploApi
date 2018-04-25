@@ -28,8 +28,19 @@ namespace EjemploApi.Business.Facade.Logic.Controllers
         [HttpGet()]
         public async Task<IHttpActionResult> GetAsync(string key)
         {
-            var result = await this._usuarioBlAsync.GetAsync(key);
-            return Ok(result);
+            try
+            {
+                var result = await this._usuarioBlAsync.GetAsync(key);
+                if (result==null) return NotFound();
+                else return Ok(result);
+
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError();
+            }
+           
+            
         }
 
         /// <summary>
@@ -41,8 +52,19 @@ namespace EjemploApi.Business.Facade.Logic.Controllers
         [HttpPost()]
         public async Task<IHttpActionResult> AddAsync(string key ,Usuario entity )
         {
-            var result=  await this._usuarioBlAsync.AddAsync(entity,key).ConfigureAwait(false);
-            return Ok(result);
+            try
+            {
+                var result = await this._usuarioBlAsync.AddAsync(entity, key).ConfigureAwait(false);
+                if (result ==null)return NotFound();
+                else return Ok(result);
+            }
+            catch (Exception)
+            {
+                return InternalServerError();
+            }
+            
+            
+          
         }
       
 
