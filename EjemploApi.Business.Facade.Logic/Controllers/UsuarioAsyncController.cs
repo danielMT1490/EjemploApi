@@ -19,6 +19,7 @@ namespace EjemploApi.Business.Facade.Logic.Controllers
         {
             this._usuarioBlAsync = usuarioBlAsync;
         }
+
         /// <summary>
         /// Return one Student for Redis
         /// </summary>
@@ -27,7 +28,6 @@ namespace EjemploApi.Business.Facade.Logic.Controllers
         [HttpGet()]
         public async Task<IHttpActionResult> GetAsync(string key)
         {
-            Thread.Sleep(10000);
             var result = await this._usuarioBlAsync.GetAsync(key);
             return Ok(result);
         }
@@ -41,9 +41,10 @@ namespace EjemploApi.Business.Facade.Logic.Controllers
         [HttpPost()]
         public async Task<IHttpActionResult> AddAsync(string key ,Usuario entity )
         {
-            Thread.Sleep(10000);
-            var result=  await this._usuarioBlAsync.AddAsync(entity,key);
+            var result=  await this._usuarioBlAsync.AddAsync(entity,key).ConfigureAwait(false);
             return Ok(result);
         }
+      
+
     }
 }
