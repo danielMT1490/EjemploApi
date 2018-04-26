@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EjemploApi.Business.Facade.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EjemploApi.Business.Facade.LogicTests", "EjemploApi.Business.Facade.LogicTests\EjemploApi.Business.Facade.LogicTests.csproj", "{605EADDF-5102-41E6-9AC1-4F652FC93991}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{FE8025B5-33B8-4B92-8BE6-6E4B5F5F8BFD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -120,6 +122,7 @@ Global
 		{00F1F9D3-E11F-4457-BC99-6FB1E8B3C232} = {90BA63A5-C503-4EEC-ABC8-709A10D0725B}
 		{06F845DC-306F-4F2F-BBA9-2AC3A9FB1E41} = {B314AC74-6019-4FAD-A196-3358566F6EB3}
 		{136F79C8-D9FE-4B6B-BE9A-F359D7B28294} = {B314AC74-6019-4FAD-A196-3358566F6EB3}
+		{605EADDF-5102-41E6-9AC1-4F652FC93991} = {FE8025B5-33B8-4B92-8BE6-6E4B5F5F8BFD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E0C7F893-6FA4-43BC-AC10-27326D5289D9}
